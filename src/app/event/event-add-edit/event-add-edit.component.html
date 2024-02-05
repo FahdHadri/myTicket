@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+  <h1>{{ data ? 'Update' : 'Add' }} Event</h1>
+</div>
+<form *ngIf="sessions" [formGroup]="eventForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Event Name</mat-label>
+        <input matInput type="text" placeholder="Event Name" formControlName="description">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Date Event</mat-label>
+        <input matInput [matDatepicker]="datePicker" name="dateEvent" formControlName="dateEvent"/>
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Event Category</mat-label>
+        <mat-select formControlName="cat">
+          <mat-option *ngFor="let cat of eventCategoryValues" [value]="cat">
+            {{ cat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="row">
+      <mat-checkbox color="primary" formControlName="available">
+        Available
+      </mat-checkbox>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Session Name</mat-label>
+        <mat-select formControlName="session">
+          <mat-option *ngIf="data && data.session" [value]="data.session">
+            {{ data.session.sessionName }}
+          </mat-option>
+          <mat-option *ngFor="let val of sessions" [value]="val">
+            {{ val.sessionName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <input type="file" (change)="onFileChange($event)" accept="image/*" #fileInput>
+
+
+<div class="row">
+
+
+  <img *ngIf="eventForm.get('imgEvent')?.value" [src]="eventForm.get('imgEvent')?.value" alt="Uploaded Image" class="small-image">
+</div>
+
+
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit">{{ data ? 'Update' : 'Save' }}</button>
+  </div>
+</form>

@@ -1,0 +1,79 @@
+.navbar {
+  margin-bottom: 20px; /* Add some margin at the bottom of the navbar */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  padding: 15px;
+  margin: 0;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 10px;
+}
+
+mat-toolbar {
+  background:grey;
+  color: white;
+}
+mat-sidenav {
+  width: 250px;
+  border-right: none;
+  background:white;
+  color: beige;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  opacity: 0.8;
+  margin-top: 70px;
+}
+.content {
+  height: 100%;
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  padding: 16px;
+  overflow: auto;
+}
+mat-sidenav-container {
+  height: 100%;
+}
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+.menu-button mat-icon {
+  margin-right: 8px;
+
+}
+.avatar {
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: white;
+}
+.name {
+  margin-top: 8px;
+  font-weight: normal;
+  color: white;
+}
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+}
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-nav .nav-link {
+  font-family: 'Your Chosen Font', sans-serif; /* Replace 'Your Chosen Font' with the desired font */
+  font-size: 18px; /* Adjust the font size as needed */
+  /* Add any other styling properties you want to customize */
+}
+

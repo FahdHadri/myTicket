@@ -1,0 +1,24 @@
+/* Add this to your global styles or component styles */
+
+.ticket-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ticket-details {
+  display: flex;
+  align-items: center;
+}
+
+.ticket-image {
+  max-width: 100px; /* Adjust the max-width as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.mat-dialog-container {
+  background: rgba(255, 255, 255, 0.3); /* Adjust the alpha value (fourth parameter) for transparency */
+}
+
+.ticket-card {
+  background: transparent; /* Ensure the card itself is transparent */
+}

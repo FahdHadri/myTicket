@@ -1,0 +1,56 @@
+<div mat-dialog-title>
+  <h1>{{ data ? 'Update' : 'Add' }} Ticket's event</h1>
+</div>
+
+<form *ngIf="events" [formGroup]="ticketForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+
+    <div class="row">
+      <mat-form-field class="half-width">
+        <mat-label>Ticket Category</mat-label>
+        <mat-select formControlName="ticketCat">
+          <mat-option *ngFor="let category of ticketCategoryValues" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="half-width">
+        <input matInput placeholder="Price" formControlName="price">
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <input matInput placeholder="Quantity" formControlName="quantity">
+      </mat-form-field>
+    </div>
+
+    <div class="row" *ngIf="events">
+      <mat-form-field class="half-width">
+        <mat-label>Event Name</mat-label>
+        <mat-select formControlName="event">
+          <mat-option *ngIf="data && data.event" [value]="data.event.id">
+            {{ data.event.description }}
+          </mat-option>
+          <mat-option *ngFor="let val of events" [value]="val">
+            {{ val.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <input type="file" (change)="onFileChange($event)" accept="image/*" #fileInput>
+      <img *ngIf="ticketForm.get('imgUrlTicket')?.value" [src]="ticketForm.get('imgUrlTicket')?.value" alt="Uploaded Image" class="small-image">
+    </div>
+
+  </div>
+
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit">{{ data ? 'Update' : 'Save' }}</button>
+  </div>
+
+
+</form>

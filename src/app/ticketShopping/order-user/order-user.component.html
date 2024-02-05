@@ -1,0 +1,35 @@
+<!-- orders.component.html -->
+
+<div *ngIf="orders.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID de commande</th>
+        <th>Date Ordered</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Email</th>
+        <th>Total Amount</th>
+        <th>Order Status</th>
+        <!-- Add other table headers for additional properties -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.orderId }}</td>
+        <td>{{ order.dateOrdered }}</td>
+        <td>{{ order.city }}</td>
+        <td>{{ order.country }}</td>
+        <td>{{ order.email }}</td>
+        <td>{{ order.totalAmount }}</td>
+        <td>{{ order.orderStatus }}</td>
+        <!-- Add other table cells for additional properties -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="orders.length === 0">
+  <p>Aucune commande disponible.</p>
+</div>
+

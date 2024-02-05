@@ -1,0 +1,62 @@
+/* order-details.component.css */
+
+/* order-details.component.css */
+
+.order-details-container {
+  padding: 24px;
+  max-height: 1000vh; /* Adjust the max-height as needed */
+  overflow-y: auto; /* Add vertical scrolling */
+}
+
+
+h2 {
+  color: #00897B;
+  margin-bottom: 16px;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.order-details p {
+  margin-bottom: 12px;
+}
+
+.order-item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #BDBDBD;
+  padding: 16px;
+}
+
+.order-item-table {
+  width: 100%;
+}
+
+.order-item-table td {
+  padding: 8px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.order-item-table td:first-child {
+  font-weight: bold;
+}
+
+.mat-dialog-actions button {
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: #00897B;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.mat-dialog-actions button:hover {
+  background-color: #00796B;
+}
+
+.order-details-container {
+  max-height: 80vh; /* Ajustez la hauteur maximale en fonction de vos besoins */
+  overflow-y: auto; /* Ajoutez une barre de défilement en cas de besoin de défilement vertical */
+}

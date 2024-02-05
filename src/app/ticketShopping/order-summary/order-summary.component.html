@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Order Summary</h3>
+    </div>
+    <div class="card-body">
+
+      <!-- Items Price -->
+      <div class="row mb-2">
+        <div class="col">
+          <span>Items Price</span>
+        </div>
+        <div class="col text-right">
+         <span>{{ totalPrice  }}</span>
+        </div>
+      </div>
+
+      <!-- Packing & Shipping -->
+
+
+      <!-- Total Price -->
+      <div class="row mb-4">
+        <div class="col">
+          <span>Total Price</span>
+        </div>
+        <div class="col text-right">
+        <span>{{ totalPrice  }}</span>
+        </div>
+      </div>
+
+      <!-- Checkout Button -->
+      <div class="row">
+        <div class="col">
+         <button class="btn btn-primary btn-block" *ngIf="!isCheckout" routerLink="/checkout">Checkout</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

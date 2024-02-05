@@ -1,0 +1,85 @@
+<div >
+  <button mat-raised-button color="primary" (click)="openAddEditSessionForm()">
+  Add Session
+ </button></div>
+
+<div class="main-body">
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Sidi Mansour" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="sessionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.sessionId}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="sessionName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Session Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.sessionName}}</td>
+    </ng-container>
+
+<ng-container matColumnDef="startDate">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> startDate </th>
+  <td mat-cell *matCellDef="let row"> {{row.startDate | date}}</td>
+</ng-container>
+
+    <ng-container matColumnDef="finishDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> finishDate </th>
+      <td mat-cell *matCellDef="let row"> {{row.finishDate | date}}</td>
+    </ng-container>
+
+    <!-- Name Column
+    <ng-container matColumnDef="imgUrl">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Image URL </th>
+      <td mat-cell *matCellDef="let row"> {{row.imgUrl}} </td>
+    </ng-container>-->
+
+    <ng-container matColumnDef="imgUrl">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Image URL </th>
+      <td mat-cell *matCellDef="let row">
+        <!-- Display image if imgUrl is present, otherwise show placeholder or handle accordingly -->
+        <img *ngIf="row.imgUrl" [src]="row.imgUrl" alt="Session Image" width="50" height="50">
+        <span *ngIf="!row.imgUrl">No Image</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="venue">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> venue </th>
+      <td mat-cell *matCellDef="let row"> {{row.venue?.venueName}} </td>
+    </ng-container>
+
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="openEditSessionForm(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteSession(row.sessionId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+</div>
+

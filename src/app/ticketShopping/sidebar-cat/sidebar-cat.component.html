@@ -1,0 +1,10 @@
+<button class="btn btn-dark buttoncat" type="button" (click)="toggleSidebar()">CATEGORY</button>
+
+<div id="mySidenav" class="sidenav" [style.width]="sidebarWidth" [style.backgroundColor]="bodyBackgroundColor">
+  <a class="closebtn" (click)="closeNav()">&times;</a>
+
+  <!-- Combined code with *ngFor loop -->
+  <div class="list-group">
+    <a  *ngFor="let category of eventCategories" [routerLink]="['eventcard/category', category]">{{ category }}</a>
+  </div>
+</div>

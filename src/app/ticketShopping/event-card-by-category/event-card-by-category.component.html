@@ -1,0 +1,31 @@
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="card-container d-flex flex-wrap">
+    <div class="card" *ngFor="let event of events" style="width: 400px; margin: 10px;">
+      <div class="card-time">
+        <!-- Use Angular DatePipe to format the date -->
+        <h1 class="card-day" style="font-size: 60px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+          {{ event.dateEvent | date: 'dd' }}
+          <br>
+          <br>
+          {{ event.dateEvent | date: 'MMM' }}
+        </h1>
+      </div>
+
+      <div style="width: 100%; height: 180px;">
+        <img [src]="event.imgEvent" alt="Event Image" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <div class="card-content" style="padding: 10px;">
+        <h3><p><strong>Category :</strong> {{ event.cat }}</h3>
+        <p><strong>Animated by:</strong> {{ event.description }}</p>
+        <p><strong>Session :</strong> {{ event.session?.sessionName }}</p>
+        <p><strong>Venue :</strong> {{ event.session?.venue?.venueName }}</p>
+      </div>
+
+      <div class="card-content" style="padding: 10px;">
+        Get Your Tickets
+        <button (click)="openTicketDialog(event)">Get Your Tickets</button>
+      </div>
+    </div>
+  </div>
+</div>

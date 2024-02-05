@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning" >
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <span class="navbar-brand">Menu</span>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/eventcard">Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About us</a>
+        </li>
+        <li class="nav-item" *ngIf="user.authStatus === 'AUTH'">
+          <a class="nav-link" routerLink="/orderuser">My Orders</a>
+        </li>
+        <!-- Add the SVG element here -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <order-cart-icon></order-cart-icon>
+          </a>
+        </li>
+        <li>
+
+        <li class="nav-item" *ngIf="user.authStatus !== 'AUTH'; else authLink" routerLinkActive="active">
+          <a (click)="login()" class="nav-link">Login</a>
+        </li>
+        <ng-template #authLink>
+          <li class="nav-item" routerLinkActive="active">
+            <a (click)="logout()" class="nav-link">Logout</a>
+          </li>
+        
+        </ng-template>
+
+
+      </ul>
+    </div>
+  </nav>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <button mat-button class="menu-button" *ngFor="let category of eventCategories" [routerLink]="['eventcard/category', category]" >
+      <a  >{{ category }}</a>
+      <mat-icon>list</mat-icon>
+    </button>
+
+  </mat-sidenav>
+</div>
+<mat-sidenav-container>
+
+  <mat-sidenav-content>
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

@@ -1,0 +1,17 @@
+<div mat-dialog-title>
+  <h1>Update Order Status</h1>
+</div>
+<form [formGroup]="orderForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+
+    <mat-form-field appearance="outline">
+      <mat-label>New Order Status</mat-label>
+      <input matInput type="text" placeholder="New Order Status" formControlName="orderStatus">
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit">Update Status</button>
+  </div>
+</form>

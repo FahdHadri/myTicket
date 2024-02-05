@@ -1,0 +1,87 @@
+<div >
+  <button mat-raised-button color="primary" (click)="openAddEditTicketForm()">
+  Add Ticket
+ </button></div>
+ <button (click)="simpleAlert()">Simple Alert</button>
+ <button (click)="alertWithSuccess()">Alert with Success</button>
+
+<div class="main-body">
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Soirée" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+
+<ng-container matColumnDef="ticketCat">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Category </th>
+  <td mat-cell *matCellDef="let row"> {{row.ticketCat}}</td>
+</ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Price </th>
+      <td mat-cell *matCellDef="let row"> {{row.price}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> quantity </th>
+      <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="imgUrlTicket">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Image Ticket </th>
+      <td mat-cell *matCellDef="let row">
+        <!-- Display image if imgUrl is present, otherwise show placeholder or handle accordingly -->
+        <img *ngIf="row.imgUrlTicket" [src]="row.imgUrlTicket" alt="Session Image" width="50" height="50">
+        <span *ngIf="!row.imgUrlTicket">No Image</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="event">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> event </th>
+      <td mat-cell *matCellDef="let row"> {{row.event.description}} </td>
+    </ng-container>
+
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <!-- Add an Edit button -->
+          <button mat-icon-button color="primary" (click)="openEditTicketForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <!-- Add a Delete button -->
+          <button mat-icon-button color="warn" (click)="deleteTicket(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndex" [length]="totalItems"
+  (page)="onPageChange($event)" aria-label="Select page of tickets">
+</mat-paginator>
+</div>
+</div>
+

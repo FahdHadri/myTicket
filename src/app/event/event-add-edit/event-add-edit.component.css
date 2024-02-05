@@ -1,0 +1,63 @@
+/* Add some styling to the form container */
+form {
+  width: 100%;
+  max-width: 500px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+}
+
+/* Style for the content area */
+.content {
+  padding: 20px;
+}
+
+/* Style for the form fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style for the checkboxes */
+.mat-checkbox {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Style for the buttons */
+.action button {
+  margin-right: 10px;
+}
+
+.content{
+  padding-top: 10px;
+}
+.row
+{
+  display: flex;
+  gap:10px;
+  mat-form-field{
+    width: 100%;
+  }
+}
+.action
+{
+  padding: 0px 25px 20px;
+  button{
+    flex: 1;
+  }
+
+}
+.image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 200px; /* Adjust the height as needed */
+  margin-top: 10px;
+}
+
+.small-image {
+  max-width: 100px; /* Set the maximum width as needed */
+  max-height: 100px; /* Set the maximum height as needed */
+}

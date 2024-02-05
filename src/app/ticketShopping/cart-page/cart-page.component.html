@@ -1,0 +1,56 @@
+<div class="container cart-page">
+  <div class="row">
+    <div class="col-md-8">
+      <div>
+        <button type="button" class="btn btn-primary" (click)="backToShop()">
+          <i class="pi pi-arrow-left"></i> Continue shopping
+        </button>
+      </div>
+      <div>
+        <h4>My Cart: {{ cartCount }} Item(s)</h4>
+      </div>
+      <div class="cart-shipping p-mb-5">
+        when you check out yours tickets will be yours
+      </div>
+      <div class="cart-item p-mb-5" *ngFor="let cartItem of cartItemsDetailed">
+        <div class="row">
+          <div class="col-md-2 cart-item-image">
+            <img [src]="cartItem.product.event.imgEvent" [attr.alt]="cartItem.product.event.imgEvent" class="img-fluid custom-image" />
+          </div>
+
+          <div class="col-md-7">
+            <div class="cart-item-name">{{ cartItem.product.event.dateEvent | date: 'dd/MM/YYYY'  }}</div>
+
+            <div class="cart-item-name">{{ cartItem.product.event.description }}</div>
+            <div class="cart-item-price">{{ cartItem.product.price | currency }}</div>
+            <div class="cart-item-remove">
+              <button type="button" class="btn btn-danger" (click)="deleteCartItem(cartItem)">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group cart-item-quantity">
+              <input
+              type="number"
+              [ngModel]="cartItem.quantity"
+              (ngModelChange)="updateCartItemQuantity($event, cartItem)"
+              [min]="1"
+              [max]="100"
+            >
+            </div>
+            <div class="cart-item-subtotal">
+              Subtotal:
+              <span class="cart-item-subtotal-value"> {{ (cartItem.product && cartItem.product.price) ? (cartItem.product.price * (cartItem.quantity || 1)) :
+                'N/A' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+     <app-order-summary></app-order-summary>
+    </div>
+  </div>
+</div>
+

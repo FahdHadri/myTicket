@@ -1,0 +1,25 @@
+<!-- ticket-dialog.component.html -->
+<h3><p>{{ event.description }}</p></h3>
+<h2>{{ event.session?.sessionName }}</h2>
+
+<!-- Check if there are tickets available -->
+<ng-container *ngIf="tickets && tickets.length > 0; else noTicketsMessage">
+  <mat-card *ngFor="let ticket of tickets" class="ticket-card">
+    <mat-card-content class="ticket-content">
+      <p>Type: {{ ticket.ticketCat }}</p>
+      <p>Price: {{ ticket.price }}</p>
+
+      <div class="ticket-details">
+        <mat-card-title>
+          <img [src]="ticket.imgUrlTicket" alt="Ticket Image" class="ticket-image">
+        </mat-card-title>
+        <button (click)="addTicketToCart(ticket)">Add to Cart</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<!-- Message to display when no tickets are available -->
+<ng-template #noTicketsMessage>
+  <p>Tickets are not available for this event.</p>
+</ng-template>
